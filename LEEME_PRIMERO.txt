@@ -1,0 +1,32 @@
+SOCKBUSTER — EVALUACIÓN 3 (INACAP)
+==================================
+
+¡Este proyecto está preparado para abrirlo en Visual Studio Code!
+
+PASO 1: Descomprime la carpeta completa y ábrela en Visual Studio Code.
+PASO 2: Abre js/students.js y REEMPLAZA el texto de ejemplo por tu nombre completo
+        y el de cada compañero. Guarda con Ctrl + S.
+PASO 3: En VS Code instala la extensión Live Server, haz clic derecho en
+        index.html y selecciona "Open with Live Server".
+PASO 4: Prueba los enlaces Inicio / Catálogo / Arquitectura 4+1. En Catálogo
+        prueba carrito, compra simulada y reseñas.
+PASO 5: Sube TODOS los archivos y carpetas a un repositorio GitHub PUBLICO,
+        habilita GitHub Pages y reemplaza TU_USUARIO en README.md por tu usuario.
+PASO 6: Entrega en INACAP la URL del repositorio GitHub, NO solo el archivo ZIP.
+
+PRUEBA DEL ADMINISTRADOR (DEMO):
+  correo: admin@sockbuster.demo
+  contraseña: Demo12345!
+
+IMPORTANTE: El modo demo almacena datos en tu navegador. No tiene JWT real.
+Si el profesor necesita verificar la seguridad real, sigue la sección opcional
+Supabase de README.md (schema.sql + Autenticación JWT + RLS).
+
+DATOS DEL PROYECTO:
+  index.html     = portada y nombres de estudiantes
+  catalogo.html  = catálogo, carrito, reseñas, inventario
+  diagramas.html = cinco vistas del modelo 4+1
+  README.md      = documentación + publicación paso a paso
+  GUIA_PARA_DEFENSA_ORAL.md = preguntas simples para estudiar
+
+Si algo no te funciona, vuelve al chat y envíame una captura de pantalla.

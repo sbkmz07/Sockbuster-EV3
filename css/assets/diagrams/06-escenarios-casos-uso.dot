@@ -1,0 +1,14 @@
+digraph G { graph [bgcolor="transparent", pad=.25, nodesep=.55, ranksep=.9, fontname="Arial", fontsize=14]; node [fontname="Arial", fontsize=12, color="#7961AD", penwidth=1.5]; edge [fontname="Arial", fontsize=10, color="#806AA8", fontcolor="#554675", arrowsize=.65, penwidth=1.5];graph [rankdir=LR, nodesep=.4, ranksep=1.2];node [shape=ellipse,style=filled,fillcolor="#F1EAFE",color="#A28CD1",margin=".22,.12"];
+visitor [shape=box,style="rounded,filled",fillcolor="#DFF6EC",label="«actor»\nVisitante"];fan [shape=box,style="rounded,filled",fillcolor="#DFF6EC",label="«actor»\nFan registrado"];admin [shape=box,style="rounded,filled",fillcolor="#DFF6EC",label="«actor»\nAdministrador"];
+subgraph cluster_cases {label="SISTEMA SOCKBUSTER";color="#A99CCF";style="rounded,dashed";
+cu1 [label="CU01 Explorar y filtrar\ncolecciones (RF01)"];
+cu2 [label="CU02 Ver producto, precio,\nstock y tallas (RF01)"];
+cu3 [label="CU03 Gestionar carrito (RF02)"];
+cu4 [label="CU04 Simular checkout\ne ID de pedido (RF02)"];
+cu5 [label="CU05 Registrar / iniciar sesión"];
+cu6 [label="CU06 Publicar reseñas\n1 a 5 estrellas (RF04)"];
+cu7 [label="CU07 Registrar calcetín,\nstock y precios (RF03)"];
+cu8 [label="CU08 Autenticar JWT admin\n(RNF02 en nube)"];}
+visitor -> cu1 [dir=none];visitor -> cu2 [dir=none];visitor -> cu3 [dir=none];visitor -> cu4 [dir=none];
+fan -> cu5 [dir=none];fan -> cu6 [dir=none];admin -> cu7 [dir=none];cu4 -> cu3 [style=dashed,label="<<include>>",constraint=false];cu6 -> cu5 [style=dashed,label="<<include>>"];cu7 -> cu8 [style=dashed,label="<<include>>"];
+}

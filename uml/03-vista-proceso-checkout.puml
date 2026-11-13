@@ -1,0 +1,24 @@
+@startuml
+title Sockbuster — Vista de Procesos / Checkout (RF02)
+start
+:Cliente abre carrito;
+if (¿Hay productos?) then (sí)
+  fork
+    :Verificar stock y cantidades;
+  fork again
+    :Calcular subtotales y total;
+  end fork
+  if (¿Stock suficiente?) then (sí)
+    :Cliente confirma sus datos;
+    :Simular verificación de pago;
+    :Generar identificador único;
+    :Guardar pedido simulado;
+    :Mostrar resumen y total;
+  else (no)
+    :Notificar falta de stock;
+  endif
+else (no)
+  :Solicitar agregar productos;
+endif
+stop
+@enduml

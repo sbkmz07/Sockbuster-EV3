@@ -1,0 +1,18 @@
+@startuml
+title Sockbuster — Vista de Procesos / Reseñas (RF04)
+start
+:Fan abre ficha de calcetín;
+if (¿Tiene sesión iniciada?) then (sí)
+  :Selecciona 1 a 5 estrellas;
+  :Escribe comentario de 5 a 500 caracteres;
+  if (¿Datos válidos y no ha reseñado?) then (sí)
+    :Guardar reseña ligada al usuario;
+    :Mostrar valoración y comentario;
+  else (no)
+    :Mostrar mensaje de validación;
+  endif
+else (no)
+  :Solicitar registro o inicio de sesión;
+endif
+stop
+@enduml

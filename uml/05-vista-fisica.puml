@@ -1,0 +1,35 @@
+@startuml
+title Sockbuster — Vista Física (Despliegue UML)
+node "Equipo cliente" {
+  node "Navegador web\n(Chrome / móvil)" as browser {
+    artifact "HTML / CSS / JavaScript" as client
+    database "localStorage\nDEMO: cuentas, carrito, pedidos" as local
+  }
+}
+cloud "Internet / HTTPS" as network
+node "GitHub Pages\nHosting web + distribución CDN" as gh {
+  artifact "index.html" as i
+  artifact "catalogo.html" as c
+  artifact "diagramas.html" as d
+  artifact "SVG / CSS / JS" as assets
+}
+cloud "Supabase (OPCIONAL: modo seguro)" as sb {
+  node "Auth JWT" as auth
+  node "REST / PostgREST" as rest
+  database "PostgreSQL + RLS" as pg
+}
+client --> local : demo / almacenamiento
+browser --> network : HTTPS 443
+network --> gh : archivos estáticos
+browser ..> auth : registro/login HTTPS (opcional)
+browser ..> rest : JWT Bearer + HTTPS (opcional)
+rest --> pg : políticas RLS
+note bottom of gh
+  RNF01: sitio accesible públicamente al publicar
+  desde GitHub Pages. No hay SLA demostrable.
+end note
+note bottom of sb
+  RNF02: JWT real solo al configurar Supabase,
+  schema.sql y rol admin. DEMO no es seguro.
+end note
+@enduml

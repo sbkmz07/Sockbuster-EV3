@@ -1,0 +1,9 @@
+digraph G { graph [bgcolor="transparent", pad=.25, nodesep=.55, ranksep=.9, fontname="Arial", fontsize=14]; node [fontname="Arial", fontsize=12, color="#7961AD", penwidth=1.5]; edge [fontname="Arial", fontsize=10, color="#806AA8", fontcolor="#554675", arrowsize=.65, penwidth=1.5];graph [rankdir=TB, splines=polyline];node [shape=box,style="rounded,filled",fillcolor="#F4EDFF",color="#7B5AA7",margin=".18,.11"];edge [color="#806AA8"];
+start [shape=circle,fillcolor="#D5FF54",label="",width=.25];end [shape=doublecircle,fillcolor="#D5FF54",label="",width=.26];
+open [label="Abrir carrito (RF02)"];has [shape=diamond,label="¿Tiene productos?"];
+no [label="Mostrar carrito vacío"];fork [shape=box,style=filled,fillcolor="#2A1D4D",label="",height=.09,width=2.25];
+stock [label="Verificar stock y cantidades"];total [label="Calcular subtotales y total"];
+join [shape=box,style=filled,fillcolor="#2A1D4D",label="",height=.09,width=2.25];valid [shape=diamond,label="¿Stock suficiente?"];
+err [label="Mostrar aviso de stock"];name [label="Ingresar nombre del cliente"];payment [label="Simular verificación de pago"];id [label="Generar ID único de pedido"];save [label="Guardar pedido en navegador"];summary [label="Mostrar resumen y total"];
+start -> open -> has;has -> no [label="No"];no -> end;has -> fork [label="Sí"];fork -> stock;fork -> total;stock -> join;total -> join;join -> valid;valid -> err [label="No"];err -> end;valid -> name [label="Sí"];name -> payment -> id -> save -> summary -> end;
+}

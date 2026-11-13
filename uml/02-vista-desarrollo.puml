@@ -1,0 +1,40 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam component { BackgroundColor #F8F5FF BorderColor #7356A9 ArrowColor #7356A9 }
+title Sockbuster — Vista de Desarrollo (Componentes UML)
+package "Interfaz HTML / CSS" {
+  [index.html] as home
+  [catalogo.html] as catalog
+  [diagramas.html] as diagrams
+  [css/styles.css] as css
+}
+package "Módulos JavaScript (ES Modules)" {
+  [js/home.js] as homejs
+  [js/catalog.js] as catjs
+  [js/db.js] as db
+  [js/data.js] as data
+  [js/students.js] as students
+  [js/config.js] as config
+}
+database "localStorage\n(demo + pedidos)" as ls
+cloud "Supabase (opcional)" {
+  [supabase-js v2] as sdk
+  [Auth / API / PostgreSQL] as api
+}
+artifact "SVGs y documentación UML" as uml
+home --> homejs
+catalog --> catjs
+diagrams --> uml
+homejs --> data
+homejs --> students
+homejs --> db
+catjs --> data
+catjs --> db
+db --> config
+db --> ls : modo demo
+db ..> sdk : modo seguro
+sdk --> api
+home --> css
+catalog --> css
+diagrams --> css
+@enduml

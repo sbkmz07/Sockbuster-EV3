@@ -1,0 +1,81 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam class { BackgroundColor #F8F5FF BorderColor #7356A9 ArrowColor #7356A9 }
+title Sockbuster — Vista Lógica (Diagrama de Clases UML)
+class Usuario {
+  +id: UUID
+  +nombre: String
+  +email: String
+  +rol: String
+  +iniciarSesion(): Sesion
+  +publicarReseña(): void
+}
+class Administrador {
+  +registrarCalcetin(): void
+  +actualizarStock(): void
+  +modificarPrecio(): void
+}
+class Cliente {
+  +agregarAlCarrito(): void
+  +finalizarPedido(): Pedido
+}
+class Categoria {
+  +id: String
+  +nombre: String
+}
+class ObraTematica {
+  +titulo: String
+  +tipo: String
+}
+class Calcetin {
+  +id: String
+  +nombre: String
+  +precio: Decimal
+  +stock: Integer
+  +tallas: String[]
+  +imagen: String
+  +descripcion: String
+  +hayStock(cantidad: int): Boolean
+}
+class Carrito {
+  +agregar(calcetin, talla, cantidad): void
+  +modificarCantidad(): void
+  +calcularTotal(): Decimal
+}
+class ItemCarrito {
+  +talla: String
+  +cantidad: Integer
+  +subtotal(): Decimal
+}
+class Pedido {
+  +id: String
+  +fecha: DateTime
+  +clienteInvitado: String
+  +total: Decimal
+  +estado: String
+  +simularPago(): Boolean
+}
+class DetallePedido {
+  +talla: String
+  +cantidad: Integer
+  +precioUnitario: Decimal
+}
+class Resena {
+  +id: UUID
+  +puntuacion: Integer (1..5)
+  +comentario: String
+  +fecha: DateTime
+}
+Usuario <|-- Administrador
+Usuario <|-- Cliente
+Categoria "1" o-- "0..*" Calcetin : agrupa
+ObraTematica "1" <-- "0..*" Calcetin : inspirado en
+Usuario "0..1" -- "0..1" Carrito : utiliza
+Carrito "1" *-- "0..*" ItemCarrito : contiene
+ItemCarrito "0..*" --> "1" Calcetin : selecciona
+Usuario "0..1" -- "0..*" Pedido : realiza (opcional)
+Pedido "1" *-- "1..*" DetallePedido : contiene
+DetallePedido "0..*" --> "1" Calcetin : corresponde a
+Usuario "1" -- "0..*" Resena : publica
+Calcetin "1" -- "0..*" Resena : recibe
+@enduml

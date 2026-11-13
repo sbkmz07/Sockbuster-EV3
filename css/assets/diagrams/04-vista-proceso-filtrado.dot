@@ -1,0 +1,9 @@
+digraph G { graph [bgcolor="transparent", pad=.25, nodesep=.55, ranksep=.9, fontname="Arial", fontsize=14]; node [fontname="Arial", fontsize=12, color="#7961AD", penwidth=1.5]; edge [fontname="Arial", fontsize=10, color="#806AA8", fontcolor="#554675", arrowsize=.65, penwidth=1.5];graph [rankdir=TB, splines=polyline];node [shape=box,style="rounded,filled",fillcolor="#F4EDFF",color="#7B5AA7",margin=".18,.11"];edge [color="#806AA8"];
+start [shape=circle,fillcolor="#D5FF54",label="",width=.25];end [shape=doublecircle,fillcolor="#D5FF54",label="",width=.26];
+input [label="Seleccionar categoría o escribir búsqueda (RF01)"];
+read [label="Obtener calcetines desde db.js"];receive [label="Recibir imágenes, precio, tallas y stock"];
+filter [label="Filtrar por colección + texto"];sort [label="Aplicar ordenamiento elegido"];
+empty [shape=diamond,label="¿Hay resultados?"];grid [label="Mostrar tarjetas de producto y existencias"];none [label="Informar sin resultados"];
+detail [label="Abrir ficha con foto, talla y reseñas"];
+start -> input -> read -> receive -> filter -> sort -> empty;empty -> grid [label="Sí"];empty -> none [label="No"];grid -> detail -> end;none -> end;
+}

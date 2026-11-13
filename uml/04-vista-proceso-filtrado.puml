@@ -1,0 +1,19 @@
+@startuml
+title Sockbuster — Vista de Procesos / Filtrado (RF01)
+actor Cliente
+participant "catalogo.html" as UI
+participant "catalog.js" as Control
+participant "db.js" as Datos
+participant "localStorage / API" as Fuente
+Cliente -> UI : Ingresa categoría o búsqueda
+UI -> Control : actualizarFiltro()
+Control -> Datos : getProducts()
+Datos -> Fuente : leer catálogo
+Fuente --> Datos : productos + stock + tallas
+Datos --> Control : lista de calcetines
+Control -> Control : filtrar() y ordenar()
+Control --> UI : renderProducts(lista)
+UI --> Cliente : Mostrar imágenes, precios, stock
+Cliente -> UI : Abrir detalle de calcetín
+UI --> Cliente : Mostrar tallas y reseñas
+@enduml

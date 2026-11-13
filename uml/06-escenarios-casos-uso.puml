@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+title Sockbuster — Quinta Vista: Escenarios / Casos de Uso UML
+actor "Visitante" as V
+actor "Fan registrado" as F
+actor "Administrador" as A
+F --|> V
+A --|> F
+rectangle "Sistema Sockbuster" {
+  usecase "CU01 Explorar catálogo\ny filtrar colecciones\n(RF01)" as U1
+  usecase "CU02 Ver producto,\ntallas, stock y precio\n(RF01)" as U2
+  usecase "CU03 Gestionar carrito\n(RF02)" as U3
+  usecase "CU04 Simular checkout\ny generar pedido\n(RF02)" as U4
+  usecase "CU05 Registrarse /\niniciar sesión" as U5
+  usecase "CU06 Publicar reseña\nde 1 a 5 estrellas\n(RF04)" as U6
+  usecase "CU07 Alta de producto,\nprecio y stock\n(RF03)" as U7
+  usecase "CU08 Validar rol\nadministrador JWT\n(RNF02 en modo nube)" as U8
+}
+V --> U1
+V --> U2
+V --> U3
+V --> U4
+F --> U5
+F --> U6
+A --> U7
+U1 ..> U2 : <<include>>
+U4 ..> U3 : <<include>>
+U6 ..> U5 : <<include>>
+U7 ..> U8 : <<include>>
+@enduml
