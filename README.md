@@ -2,7 +2,7 @@
 
 Prototipo web de comercio electrónico de **calcetines temáticos**, desarrollado para el caso de estudio Sockbuster de TI3025 (INACAP, Primavera 2026).
 
-> **Sitio web publicado:** `https://TU_USUARIO.github.io/Sockbuster-EV3/`  
+> **Sitio web publicado:** `https://sbkmz07.github.io/Sockbuster-EV3/`  
 
 
 > **Autores:** Sebastián Muñoz, Gustavo Veiga
